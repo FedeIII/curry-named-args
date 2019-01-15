@@ -1,0 +1,27 @@
+{
+  "name": "named-partial",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FedeIII/named-partial"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "yarn clean && babel ./src -d ./dist --ignore test.js",
+    "test": "jest"
+  },
+  "author": "fedelll@gmail.com",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babel-core": "^7.0.0-0",
+    "babel-jest": "^23.6.0",
+    "jest": "^23.6.0"
+  },
+  "files": [
+    "dist"
+  ]
+}
