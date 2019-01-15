@@ -1,16 +1,16 @@
-import namedPartial, { ParamTypes } from '../src';
+import namedCurry, { ParamTypes } from '../src';
 
-describe('namedPartial', () => {
+describe('namedCurry', () => {
   let fn;
   const testFn = jest.fn();
 
   beforeEach(() => {
     testFn.mockClear();
-    fn = namedPartial(testFn);
+    fn = namedCurry(testFn);
   });
 
   it('gets its name from the original function', () => {
-    expect(fn.name).toEqual(`namedPartial(${testFn.name})`);
+    expect(fn.name).toEqual(`namedCurry(${testFn.name})`);
   });
 
   it('executes function with 2 params passed at once', () => {

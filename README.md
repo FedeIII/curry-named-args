@@ -1,1 +1,1 @@
-# named-partial
+# named-curry

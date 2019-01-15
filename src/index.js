@@ -8,24 +8,24 @@ const areRequiredParamsPassed = (fn, params) =>
     true
   );
 
-export default function namedPartial(fn) {
+export default function namedCurry(fn) {
   let params = {};
 
-  function namedPartialFn(newParams) {
+  function namedCurryFn(newParams) {
     params = { ...params, ...newParams };
 
-    if (areRequiredParamsPassed(namedPartialFn, params)) {
+    if (areRequiredParamsPassed(namedCurryFn, params)) {
       return fn(params);
     }
 
-    return namedPartialFn;
+    return namedCurryFn;
   }
 
-  Object.defineProperty(namedPartialFn, "name", {
-    value: `namedPartial(${fn.name})`
+  Object.defineProperty(namedCurryFn, "name", {
+    value: `namedCurry(${fn.name})`
   });
 
-  return namedPartialFn;
+  return namedCurryFn;
 }
 
 export const ParamTypes = {
