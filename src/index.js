@@ -8,24 +8,24 @@ const areRequiredParamsPassed = (fn, params) =>
     true
   );
 
-export default function namedCurry(fn) {
+export default function curryNamed(fn) {
   let params = {};
 
-  function namedCurryFn(newParams) {
+  function curryNamedFn(newParams) {
     params = { ...params, ...newParams };
 
-    if (areRequiredParamsPassed(namedCurryFn, params)) {
+    if (areRequiredParamsPassed(curryNamedFn, params)) {
       return fn(params);
     }
 
-    return namedCurryFn;
+    return curryNamedFn;
   }
 
-  Object.defineProperty(namedCurryFn, "name", {
-    value: `namedCurry(${fn.name})`
+  Object.defineProperty(curryNamedFn, "name", {
+    value: `curryNamed(${fn.name})`
   });
 
-  return namedCurryFn;
+  return curryNamedFn;
 }
 
 export const ParamTypes = {

@@ -1,16 +1,16 @@
-import namedCurry, { ParamTypes } from '../src';
+import curryNamed, { ParamTypes } from '../src';
 
-describe('namedCurry', () => {
+describe('curryNamed', () => {
   let fn;
   const testFn = jest.fn();
 
   beforeEach(() => {
     testFn.mockClear();
-    fn = namedCurry(testFn);
+    fn = curryNamed(testFn);
   });
 
   it('gets its name from the original function', () => {
-    expect(fn.name).toEqual(`namedCurry(${testFn.name})`);
+    expect(fn.name).toEqual(`curryNamed(${testFn.name})`);
   });
 
   it('executes function with 2 params passed at once', () => {

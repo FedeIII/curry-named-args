@@ -1,11 +1,11 @@
 {
-  "name": "named-curry",
+  "name": "curry-named",
   "version": "0.0.0",
   "main": "./dist/index.js",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/FedeIII/named-curry"
+    "url": "https://github.com/FedeIII/curry-named"
   },
   "scripts": {
     "clean": "rm -rf dist",

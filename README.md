@@ -1,18 +1,18 @@
-# named-curry
+# curry-named
 
-namedCurry is a JavaScript utility that turns any function that receives a single object parameter into a variadic curry version of that function
+curryNamed is a JavaScript utility that turns any function that receives a single object parameter into a variadic curry version of that function
 
 ## Examples
 
 The required parameters for the function to be executed need to be specified:
 ```javascript
-import namedCurry, { ParamTypes } from 'named-curry';
+import curryNamed, { ParamTypes } from 'curry-named';
 
 function sumNumbers({a, b, c}) {
   return a + b + c;
 }
 
-const sumThreeNumbers = namedCurry(sumNumbers);
+const sumThreeNumbers = curryNamed(sumNumbers);
 sumThreeNumbers.paramTypes = {
   a: ParamTypes.isRequired,
   b: ParamTypes.isRequired,
@@ -37,7 +37,7 @@ sumThreeNumbers({b: 2})({a: 4})({c: 8}); // 14
 
 Because the required parameters need to be specified, optional parameters can be passed and the function is executed only when all required parameters are passed:
 ```javascript
-import namedCurry, { ParamTypes } from 'named-curry';
+import curryNamed, { ParamTypes } from 'curry-named';
 
 function sumNumbers({a, b, c, msg}) {
   if (msg) {
@@ -47,7 +47,7 @@ function sumNumbers({a, b, c, msg}) {
   return a + b + c;
 }
 
-const sumThreeNumbers = namedCurry(sumNumbers);
+const sumThreeNumbers = curryNamed(sumNumbers);
 sumThreeNumbers.paramTypes = {
   a: ParamTypes.isRequired,
   b: ParamTypes.isRequired,
