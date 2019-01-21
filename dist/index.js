@@ -18,6 +18,10 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+var getParamTypes = function getParamTypes(originalFn, curryNamedFn) {
+  return originalFn.paramTypes || curryNamedFn.paramTypes;
+};
+
 var isRequiredParamPassed = function isRequiredParamPassed(params, _ref) {
   var _ref2 = _slicedToArray(_ref, 2),
       paramName = _ref2[0],
@@ -26,32 +30,33 @@ var isRequiredParamPassed = function isRequiredParamPassed(params, _ref) {
   return paramType !== ParamTypes.isRequired || params.hasOwnProperty(paramName);
 };
 
-var areRequiredParamsPassed = function areRequiredParamsPassed(fn, params) {
-  return Object.entries(fn.paramTypes).reduce(function (areRequiredPresent, paramEntry) {
+var areRequiredParamsPassed = function areRequiredParamsPassed(params, paramTypes) {
+  return Object.entries(paramTypes).reduce(function (areRequiredPresent, paramEntry) {
     return areRequiredPresent && isRequiredParamPassed(params, paramEntry);
   }, true);
 };
 
-function curryNamed(fn) {
+function curryNamed(originalFn) {
   var params = {};
 
   function curryNamedFn(newParams) {
     params = _objectSpread({}, params, newParams);
+    var paramTypes = getParamTypes(originalFn, curryNamedFn);
 
-    if (areRequiredParamsPassed(curryNamedFn, params)) {
-      return fn(params);
+    if (areRequiredParamsPassed(params, paramTypes)) {
+      return originalFn(params);
     }
 
     return curryNamedFn;
   }
 
-  Object.defineProperty(curryNamedFn, "name", {
-    value: "curryNamed(".concat(fn.name, ")")
+  Object.defineProperty(curryNamedFn, 'name', {
+    value: "curryNamed(".concat(originalFn.name, ")")
   });
   return curryNamedFn;
 }
 
 var ParamTypes = {
-  isRequired: "ParamTypes_REQUIRED"
+  isRequired: 'ParamTypes_REQUIRED'
 };
 exports.ParamTypes = ParamTypes;
