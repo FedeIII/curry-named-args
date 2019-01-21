@@ -1,6 +1,6 @@
 {
   "name": "curry-named-args",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "./dist/index.js",
   "license": "MIT",
   "repository": {
@@ -23,5 +23,13 @@
   },
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "curry",
+    "currying",
+    "named-arguments",
+    "utilities",
+    "fp",
+    "functional programming"
   ]
 }
