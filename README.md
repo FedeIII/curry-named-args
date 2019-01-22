@@ -60,3 +60,22 @@ sumThreeNumbers({a: 1, msg: 'summing...'})({b: 2})({c: 3});
 // 6
 
 ```
+
+The required params can be specified either in the curried function (as shown in the previous examples) or in the original function:
+```javascript
+import curryNamed, { ParamTypes } from 'curry-named-args';
+
+function sumNumbers({a, b, c}) {
+  return a + b + c;
+}
+
+sumNumbers.paramTypes = {
+  a: ParamTypes.isRequired,
+  b: ParamTypes.isRequired,
+  c: ParamTypes.isRequired,
+};
+
+const sumThreeNumbers = curryNamed(sumNumbers);
+sumThreeNumbers({a: 1})({b: 2})({c: 3}); // 6
+
+```
